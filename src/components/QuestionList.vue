@@ -24,6 +24,7 @@
     <!-- <div v-else-if="currentQuestion === questions.length || timer === 0">
       <p>Assessment Complete!</p>
       <p>Your total score is: {{ totalScore }}</p>
+      <p>Skills Score: {{ skillsScore }}%</p>
       <button @click="finishAssessment">See Results</button>
     </div> -->
   </div>
@@ -36,7 +37,7 @@ export default {
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
-      timer: 30, // 10 minutes in seconds
+      timer: 5, // 5 minutes in seconds
       timerInterval: null,
       mark1: 0,
       mark2: 0,
@@ -161,6 +162,10 @@ export default {
       const seconds = this.timer % 60;
       return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     },
+    skillsScore() {
+      const maxScore = 50;  // Max score for the assessment
+      return ((this.totalScore / maxScore) * 100).toFixed(2); // Skills Score Calculation
+    }
   },
   methods: {
     nextQuestion() {
@@ -194,7 +199,7 @@ export default {
       this.$router.push({
         name: 'result',
         params: {
-          totalScore: this.totalScore.toString(),  // Convert totalScore to string
+          totalScore: this.totalScore.toString(), // Convert totalScore to string
         },
       });
     },
@@ -206,14 +211,14 @@ export default {
           clearInterval(this.timerInterval);
           this.finishAssessment(); // Redirect to results when timer expires
         }
-      }, 1000);
+      }, 1000); // Update every second
     },
   },
   mounted() {
-    this.startTimer();
+    this.startTimer(); // Start the timer when the component is mounted
   },
   beforeUnmount() {
-    clearInterval(this.timerInterval);
+    clearInterval(this.timerInterval); // Clean up the timer when the component is destroyed
   },
 };
 </script>
