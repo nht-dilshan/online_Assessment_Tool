@@ -6,14 +6,26 @@ import QuestionList from '../components/QuestionList.vue';
 import ResultComponent from '../components/ResultComponent.vue';
 
 const routes = [
-  { path: '/', component: HomePage },
-  { path: '/user-details', component: UserDetails },
-  { path: '/question-list', component: QuestionList },
   {
-    path: '/result',
+    path: '/',
+    name: 'home',
+    component: HomePage
+  },
+  {
+    path: '/user-details',
+    name: 'user-details',
+    component: UserDetails
+  },
+  {
+    path: '/question-list',
+    name: 'question-list',
+    component: QuestionList
+  },
+  {
+    path: '/result/:totalScore', // Accept totalScore as a route parameter
     name: 'result',
     component: ResultComponent,
-    props: true  // Allow route params to be passed as props
+    props: true  // Pass the totalScore as a prop to ResultComponent
   }
 ];
 

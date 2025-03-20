@@ -1,7 +1,6 @@
 <template>
   <div class="result-component">
     <h2>Your Result</h2>
-    <p>Your total score is: {{ totalScore }}</p>
     <p>Skills Score: {{ skillsScore }}%</p>
     <button @click="goHome">Go to Home</button>
   </div>
@@ -13,9 +12,10 @@ export default {
 
   computed: {
     skillsScore() {
-      // Skills score = (Total score / 50) * 100
-      const maxScore = 50;  // Total possible score for the section
-      return ((this.totalScore / maxScore) * 100).toFixed(2);  // Calculate and format the score
+      // Skills Score Calculation
+      const maxScore = 50;  // Maximum possible score for the section
+      const score = Number(this.totalScore);  // Convert to number to avoid errors
+      return ((score / maxScore) * 100).toFixed(2);  // Calculate and format the score
     }
   },
   methods: {
