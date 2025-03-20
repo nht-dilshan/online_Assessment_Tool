@@ -21,11 +21,11 @@
       <button @click="nextQuestion" :disabled="!userAnswer">Next</button>
     </div>
 
-    <div v-else-if="currentQuestion === questions.length || timer === 0">
+    <!-- <div v-else-if="currentQuestion === questions.length || timer === 0">
       <p>Assessment Complete!</p>
       <p>Your total score is: {{ totalScore }}</p>
       <button @click="finishAssessment">See Results</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
-      timer: 20, // 10 minutes in seconds
+      timer: 30, // 10 minutes in seconds
       timerInterval: null,
       mark1: 0,
       mark2: 0,
