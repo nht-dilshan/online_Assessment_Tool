@@ -1,18 +1,22 @@
 <template>
   <div class="result-component">
     <h2>Your Result</h2>
-    <p>You are a Beginner!</p>
-    <p>Thank you, {{ userDetails.fullName }}! Your email is {{ userDetails.email }}.</p>
+    <p>Your total score is: {{ totalScore }}</p>
+    <p>Skills Score: {{ skillsScore }}%</p>
     <button @click="goHome">Go to Home</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      userDetails: JSON.parse(localStorage.getItem('userDetails')) || {}  // Retrieve user details from localStorage
-    };
+  props: ['totalScore'],  // Receive totalScore as a prop
+
+  computed: {
+    skillsScore() {
+      // Skills score = (Total score / 50) * 100
+      const maxScore = 50;  // Total possible score for the section
+      return ((this.totalScore / maxScore) * 100).toFixed(2);  // Calculate and format the score
+    }
   },
   methods: {
     goHome() {
