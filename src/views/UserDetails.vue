@@ -19,21 +19,33 @@ export default {
         email: '',
         phoneNumber: '',
       },
-    }
+    };
+  },
+  computed: {
+    skillsScore() {
+      return this.$store.getters.getSkillsScore;  // Retrieve score from Vuex
+    },
   },
   methods: {
     submitForm() {
-      // You can handle form submission logic here (e.g., save data to localStorage or send to the backend)
-      console.log(this.form)
+      // Store the user details in localStorage
+      localStorage.setItem('userDetails', JSON.stringify(this.form));
 
-      // Optionally store user details (if needed later)
-      localStorage.setItem('userDetails', JSON.stringify(this.form))
-
-      // Navigate to the question list page after the form is submitted
-      this.$router.push('/result')
+      // Navigate to the related result page based on the skillsScore
+      if (this.skillsScore < 50) {
+        this.$router.push(`/result/novice/${this.skillsScore}`);
+      } else if (this.skillsScore >= 51 && this.skillsScore <= 60) {
+        this.$router.push(`/result/seed/${this.skillsScore}`);
+      } else if (this.skillsScore >= 61 && this.skillsScore <= 70) {
+        this.$router.push(`/result/rising-star/${this.skillsScore}`);
+      } else if (this.skillsScore >= 71 && this.skillsScore <= 80) {
+        this.$router.push(`/result/star/${this.skillsScore}`);
+      } else {
+        this.$router.push(`/result/rock-star/${this.skillsScore}`);
+      }
     },
   },
-}
+};
 </script>
 
 <style scoped>
