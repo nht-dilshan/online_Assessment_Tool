@@ -22,7 +22,7 @@ const routes = [
     path: '/user-details',
     name: 'user-details',
     component: UserDetails,
-    props: (route) => ({ skillsScore: route.query.skillsScore }),  // Pass skillsScore to UserDetails as a prop
+    // Removed skillsScore from URL params, this is now managed via Vuex
   },
   {
     path: '/question-list',
@@ -39,35 +39,31 @@ const routes = [
     name: 'timein',
     component: TimeIn, // Navigate here if the user finishes on time
   },
+  // Removed :skillsScore from the URL parameters, it will be handled in Vuex
   {
-    path: '/result/novice/:skillsScore',
+    path: '/result/novice',
     name: 'result-novice',
     component: ResultNovice,
-    props: true,
   },
   {
-    path: '/result/seed/:skillsScore',
+    path: '/result/seed',
     name: 'result-seed',
     component: ResultSeed,
-    props: true,
   },
   {
-    path: '/result/rising-star/:skillsScore',
+    path: '/result/rising-star',
     name: 'result-rising-star',
     component: ResultRisingStar,
-    props: true,
   },
   {
-    path: '/result/star/:skillsScore',
+    path: '/result/star',
     name: 'result-star',
     component: ResultStar,
-    props: true,
   },
   {
-    path: '/result/rock-star/:skillsScore',
+    path: '/result/rock-star',
     name: 'result-rock-star',
     component: ResultRockStar,
-    props: true,
   },
 ];
 
