@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+        
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
