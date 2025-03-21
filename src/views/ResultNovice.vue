@@ -37,9 +37,9 @@ export default {
   text-align: center;
   margin-top: 50px;
   padding: 20px;
-  background-color: #f9f9f9;
+  
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;

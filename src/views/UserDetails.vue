@@ -19,7 +19,7 @@
         <option value="Other">Other</option>
       </select>
 
-      <button type="submit">Go Forward</button>
+      <button type="submit">Show Me My Results</button>
     </form>
   </div>
 </template>

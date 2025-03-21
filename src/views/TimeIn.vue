@@ -1,8 +1,8 @@
 <template>
   <div class="timein">
     <h2>Well Done!</h2>
-    <p>You have successfully completed the test on time.</p>
-    <p>Now proceed forward to see your results.</p>
+    <p>You managed to complete the test on time. Now proceed 'Go Forward' to see your results.</p>
+
 
     <!-- Go Forward Button -->
     <button @click="goToResult">Go Forward</button>

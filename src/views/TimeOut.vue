@@ -1,7 +1,7 @@
 <template>
   <div class="timeout">
     <h2>Time's Up!</h2>
-    <p>Your time has run out. You can now proceed to the result page.</p>
+    <p>Sorry! Time’s up. Time allocated for this test is over. Click 'Go Forward' to see your results.</p>
 
     <!-- Go Forward Button -->
     <button @click="goToResult">Go Forward</button>

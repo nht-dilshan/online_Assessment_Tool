@@ -28,7 +28,7 @@
 export default {
   data() {
     return {
-        
+
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
@@ -227,11 +227,11 @@ export default {
 .question-text {
   font-size: 1.2em;
   margin-bottom: 10px;
-  text-align: left;  /* Align the question to the right */
+  text-align: left;  
 }
 
 .choice-container {
-  text-align: left;  /* Align the choices to the right */
+  text-align: left;
   margin-bottom: 10px;
 }
 

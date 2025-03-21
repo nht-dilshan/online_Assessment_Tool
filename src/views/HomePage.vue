@@ -1,6 +1,7 @@
 <template>
   <div class="home-page">
     <h1>Welcome to the Online Assessment</h1>
+    <p>In this section you have 10 Multiple Choice Questions to be answered within 10 minutes</p>
     <p>Click below to start the assessment.</p>
 
     <!-- Start Button -->
