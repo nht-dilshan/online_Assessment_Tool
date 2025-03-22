@@ -32,7 +32,7 @@ export default {
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
-      timer: 6, // 5 minutes in seconds
+      timer: 600, // 5 minutes in seconds
       timerInterval: null,
       questions: [
         {
