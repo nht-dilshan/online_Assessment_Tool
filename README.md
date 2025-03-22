@@ -1,35 +1,48 @@
-# testonepage
+# online_Assessment_Tool
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue 3 project built with Vite. It serves as a simple one-page application for testing and development purposes.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Table of Contents
 
-## Customize configuration
+- [online\_Assessment\_Tool](#online_assessment_tool)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## Project Overview
 
-```sh
-npm install
-```
+This project is a Vue 3 application built with Vite. It includes a simple one-page layout and is designed for testing and development purposes.
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
-npm run dev
-```
+## Features
 
-### Compile and Minify for Production
+- Vue 3 with Composition API
+- Vite for fast development and builds
+- ESLint for code linting
+- Hot-reload during development
+- Production-ready build setup
 
-```sh
-npm run build
-```
+---
 
-### Lint with [ESLint](https://eslint.org/)
+## Prerequisites
 
-```sh
-npm run lint
-```
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) (optional)
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/your-username/testonepage.git
