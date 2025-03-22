@@ -45,4 +45,4 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/testonepage.git
+   https://github.com/nht-dilshan/online_Assessment_Tool.git
