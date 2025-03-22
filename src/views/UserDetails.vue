@@ -58,10 +58,10 @@ export default {
       body: JSON.stringify(userData),
     });
 
-    const textResponse = await response.text(); // Log the raw response
+    const textResponse = await response.text();
     console.log('Raw Response:', textResponse);
 
-    const result = JSON.parse(textResponse); // Parse the response as JSON
+    const result = JSON.parse(textResponse); 
     console.log('Server Response:', result);
 
     if (!result.success) {

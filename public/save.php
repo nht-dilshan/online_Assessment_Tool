@@ -1,5 +1,4 @@
 <?php
-// Enable error reporting for debugging
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -55,6 +54,6 @@ if ($conn->query($sql) === TRUE) {
     echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
 }
 
-// Close the database connection
+
 $conn->close();
 ?>

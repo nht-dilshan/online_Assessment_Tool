@@ -32,7 +32,7 @@ export default {
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
-      timer: 600, // 10 minutes in seconds
+      timer: 600, // 10 minutes
       timerInterval: null,
       questions: [
         {
@@ -187,7 +187,7 @@ export default {
           clearInterval(this.timerInterval);
           this.goToEndPage(); // Redirect to TimeOut page when the time is up
         }
-      }, 1000); // Update every second
+      }, 1000); // Update the timer every second
     },
   },
   mounted() {
@@ -254,7 +254,4 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button:hover {
-  background-color: #45a049;
-}
 </style>
