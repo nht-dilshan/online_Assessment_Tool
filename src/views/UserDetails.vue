@@ -5,7 +5,7 @@
       <input type="text" v-model="form.fullName" placeholder="Full Name" required />
       <input type="email" v-model="form.email" placeholder="Email Address" required />
       <input type="tel" v-model="form.phoneNumber" placeholder="Phone Number" required />
-      <input type="text" v-model="form.WorkPlace" placeholder="Current Work Place" required />
+      <input type="text" v-model="form.workplace" placeholder="Current Work Place" required />
 
       <!-- Job Role Dropdown -->
       <select v-model="form.jobRole" required>
@@ -32,44 +32,66 @@ export default {
         fullName: '',
         email: '',
         phoneNumber: '',
-        WorkPlace: '',
-        jobRole: '', // Added job role field
+        workplace: '',
+        jobRole: '',
       },
-    };
+    }
   },
   computed: {
     skillsScore() {
-      return this.$store.getters.getSkillsScore;  // Retrieve score from Vuex
+      return this.$store.getters.getSkillsScore
     },
   },
   methods: {
-    submitForm() {
-      // Store the user details in localStorage
-      localStorage.setItem('userDetails', JSON.stringify(this.form));
+    async submitForm() {
+      const userData = {
+        ...this.form,
+        skillsScore: this.skillsScore,
+      }
 
-      // Ensure skillsScore is available before navigating
-      if (this.skillsScore !== undefined) {
-        // Use Vuex to set the score for later use in result pages
-        this.$store.commit('setSkillsScore', this.skillsScore);
+      try {
+        const response = await fetch('http://localhost:8000/Save_user.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        })
 
-        // Navigate to the related result page based on the skillsScore
-        if (this.skillsScore < 50) {
-          this.$router.push({ name: 'result-novice' });
-        } else if (this.skillsScore >= 51 && this.skillsScore <= 60) {
-          this.$router.push({ name: 'result-seed' });
-        } else if (this.skillsScore >= 61 && this.skillsScore <= 70) {
-          this.$router.push({ name: 'result-rising-star' });
-        } else if (this.skillsScore >= 71 && this.skillsScore <= 80) {
-          this.$router.push({ name: 'result-star' });
-        } else {
-          this.$router.push({ name: 'result-rock-star' });
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
         }
-      } else {
-        console.error('Skills score is not available');
+
+        const result = await response.json()
+        console.log('Server Response:', result)
+
+        if (!result.success) {
+          console.error(result.message)
+          return
+        }
+
+        // Redirect based on skillsScore
+        if (this.skillsScore !== undefined) {
+          if (this.skillsScore < 50) {
+            this.$router.push({ name: 'result-novice' })
+          } else if (this.skillsScore >= 51 && this.skillsScore <= 60) {
+            this.$router.push({ name: 'result-seed' })
+          } else if (this.skillsScore >= 61 && this.skillsScore <= 70) {
+            this.$router.push({ name: 'result-rising-star' })
+          } else if (this.skillsScore >= 71 && this.skillsScore <= 80) {
+            this.$router.push({ name: 'result-star' })
+          } else {
+            this.$router.push({ name: 'result-rock-star' })
+          }
+        } else {
+          console.error('Skills score is not available')
+        }
+      } catch (error) {
+        console.error('Error saving user data:', error)
       }
     },
   },
-};
+}
 </script>
 
 <style scoped>

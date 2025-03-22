@@ -32,7 +32,7 @@ export default {
       currentQuestion: 0,
       userAnswer: '',
       totalScore: 0,
-      timer: 600, // 5 minutes in seconds
+      timer: 6, // 5 minutes in seconds
       timerInterval: null,
       questions: [
         {
@@ -227,7 +227,7 @@ export default {
 .question-text {
   font-size: 1.2em;
   margin-bottom: 10px;
-  text-align: left;  
+  text-align: left;
 }
 
 .choice-container {
