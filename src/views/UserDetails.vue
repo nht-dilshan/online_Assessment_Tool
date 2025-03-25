@@ -112,7 +112,7 @@ h2 {
 
 input,
 select {
-  width: 100%;
+  width: 80%;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 5px;
