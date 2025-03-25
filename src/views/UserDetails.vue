@@ -44,51 +44,51 @@ export default {
   },
   methods: {
     async submitForm() {
-  const userData = {
-    ...this.form,
-    skillsScore: this.skillsScore,
-  };
-
-  try {
-    const response = await fetch('http://localhost:5173/save.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
-
-    const textResponse = await response.text();
-    console.log('Raw Response:', textResponse);
-
-    const result = JSON.parse(textResponse); 
-    console.log('Server Response:', result);
-
-    if (!result.success) {
-      console.error(result.message);
-      return;
-    }
-
-    // Redirect based on skillsScore
-    if (this.skillsScore !== undefined) {
-      if (this.skillsScore < 50) {
-        this.$router.push({ name: 'result-novice' });
-      } else if (this.skillsScore >= 51 && this.skillsScore <= 60) {
-        this.$router.push({ name: 'result-seed' });
-      } else if (this.skillsScore >= 61 && this.skillsScore <= 70) {
-        this.$router.push({ name: 'result-rising-star' });
-      } else if (this.skillsScore >= 71 && this.skillsScore <= 80) {
-        this.$router.push({ name: 'result-star' });
-      } else {
-        this.$router.push({ name: 'result-rock-star' });
+      const userData = {
+        ...this.form,
+        skillsScore: this.skillsScore,
       }
-    } else {
-      console.error('Skills score is not available');
-    }
-  } catch (error) {
-    console.error('Error saving user data:', error);
-  }
-},
+
+      try {
+        const response = await fetch('http://localhost/online_Assessment_Tool/public/save.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        })
+
+        const textResponse = await response.text()
+        console.log('Raw Response:', textResponse)
+
+        const result = JSON.parse(textResponse)
+        console.log('Server Response:', result)
+
+        if (!result.success) {
+          console.error(result.message)
+          return
+        }
+
+        // Redirect based on skillsScore
+        if (this.skillsScore !== undefined) {
+          if (this.skillsScore < 50) {
+            this.$router.push({ name: 'result-novice' })
+          } else if (this.skillsScore >= 51 && this.skillsScore <= 60) {
+            this.$router.push({ name: 'result-seed' })
+          } else if (this.skillsScore >= 61 && this.skillsScore <= 70) {
+            this.$router.push({ name: 'result-rising-star' })
+          } else if (this.skillsScore >= 71 && this.skillsScore <= 80) {
+            this.$router.push({ name: 'result-star' })
+          } else {
+            this.$router.push({ name: 'result-rock-star' })
+          }
+        } else {
+          console.error('Skills score is not available')
+        }
+      } catch (error) {
+        console.error('Error saving user data:', error)
+      }
+    },
   },
 }
 </script>
